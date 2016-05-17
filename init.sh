@@ -18,3 +18,4 @@ mysql -uroot -e "CREATE USER 'root'@'%' IDENTIFIED BY 'root';"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON test_db. * TO 'root'@'%';"
 mysql -uroot -e "FLUSH PRIVILEGES;"
 
+sudo /etc/init.d/mysql restart

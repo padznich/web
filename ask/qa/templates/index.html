@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+{{ if q }}
+<p> {{ q.title }} </p>
+<p> {{ q.text }} </p>
+<p> {{ q.title }} </p>
+{{ else }}
+{{ for question in questions }}
+<p> {{ question.title }} </p>
+{{ endfor }}
+{{ endif }}
