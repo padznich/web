@@ -4,7 +4,7 @@
 <p> {{ q.text }} </p>
 <p> {{ q.title }} </p>
 {{ else }}
-{{ for question in questions }}
-<p> {{ question.title }} </p>
+{{ for quest in questions }}
+<a href="{{quest.id}}"> {{quest.title}} </a><br>
 {{ endfor }}
 {{ endif }}

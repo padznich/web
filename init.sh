@@ -13,6 +13,8 @@ sudo . env/bin/activate
 pip install -r requrements.txt
 sudo pip install MySQL-python
 
+sudo /etc/init.d/mysql restart
+
 mysql -uroot -e "CREATE DATABASE test_db;"
 mysql -uroot -e "CREATE USER 'root'@'%' IDENTIFIED BY 'root';"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON test_db. * TO 'root'@'%';"
