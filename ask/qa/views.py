@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 
 
-def test(request, *args, **kwargs):
+def test(request):
 
-    return HttpResponse('OK')
+    print("DEBUG: {}".format(request.GET.get('name')))
+    return HttpResponse('OK {}'.format(request.GET))
