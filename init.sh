@@ -10,7 +10,9 @@ sudo apt-get install libmysqlclient-dev
 
 sudo /etc/init.d/mysql restart
 sudo mysql -uroot -e "CREATE DATABASE test_db;"
+sudo mysql -uroot -e "SHOW DATABASES;"
 sudo /etc/init.d/mysql restart
 
-sudo /etc/init.d/mysql restart
+sudo pip install -r requirements.txt
 
+sudo /etc/init.d/mysql restart
