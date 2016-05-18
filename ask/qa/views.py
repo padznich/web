@@ -13,6 +13,7 @@ def ask(request):
         if ask_form.is_valid():
             post = ask_form.save()
             url = post.get_url()
+            print("____DEBUG: url = {}".format(url))
             return HttpResponseRedirect(url)
     else:
         ask_form = AskForm()

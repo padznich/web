@@ -1,6 +1,6 @@
 from django import forms
 
-from models import Question
+from models import Question, Answer
 
 
 class AskForm(forms.Form):
@@ -19,17 +19,33 @@ class AskForm(forms.Form):
             raise forms.ValidationError(u'Title must contains more than 5 characters')
         if text is None or len(text) < 5:
             raise forms.ValidationError(u'Text must contains more than 5 characters')
-        return title
+        return self.cleaned_data
 
     def save(self):
         question = Question(**self.cleaned_data)
+        if question.author_id:
+            question.author_id += 1
+        else:
+            question.author_id = 1
         question.save()
         return question
-
-
 
 
 class AnswerForm(forms.Form):
 
     text = forms.CharField(widget=forms.Textarea)
-    question = forms.CharField(max_length=50)
+    question = forms.IntegerField()
+
+    def clean(self):
+        text = self.cleaned_data.get('text')
+        question = self.cleaned_data.get('question')
+        if question is not int:
+            raise forms.ValidationError(u'question must be an integer')
+        if text is None or len(text) < 5:
+            raise forms.ValidationError(u'Text must contains more than 5 characters')
+        return self.cleaned_data
+
+    def save(self):
+        answer = Answer(**self.cleaned_data)
+        answer.save()
+        return answer
