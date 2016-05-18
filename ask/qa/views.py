@@ -1,8 +1,28 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
 
 from models import Question, Answer
+from forms import AskForm, AnswerForm
+
+
+def ask(request):
+
+    if request.method == "POST":
+        ask_form = AskForm(request.POST or None)
+        if ask_form.is_valid():
+            post = ask_form.save()
+            url = post.get_url()
+            return HttpResponseRedirect(url)
+    else:
+        ask_form = AskForm()
+
+    context = {
+        "ask_form": ask_form,
+    }
+
+    return render(request, 'ask.html', context)
+
 
 def test(request):
 
@@ -40,7 +60,6 @@ def pop_question(request):
                'paginator': paginator,
                'questions': page.object_list,
                }
-
     return render(request, 'popular_questions.html', context)
 
 
