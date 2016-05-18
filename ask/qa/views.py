@@ -47,7 +47,7 @@ def pop_question(request):
 def m_question(request, id):
 
     q = Question.objects.get(id=id)
-    a = Answer.objects.get(question=id)
+    a = Answer.objects.filter(question=id)
 
     context = {'q': q,
                'a': a,

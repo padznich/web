@@ -25,3 +25,6 @@ class Answer(models.Model):
 
     class Meta:
         db_table = 'answer'
+
+    def __unicode__(self):
+        return self.text
