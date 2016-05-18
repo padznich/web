@@ -11,5 +11,7 @@
 {% block content %}
     <p> {{ q.title }} </p>
     <p> {{ q.text }} </p>
-    <p> {{ q.title }} </p>
+    {% for ans in a %}
+    <p> {{ ans.text }} </p>
+    {% endfor %}
 {% endblock %}

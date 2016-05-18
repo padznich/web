@@ -21,7 +21,7 @@ def question(request):
 
     context = {'page': page,
                'paginator': paginator,
-               'questions': questions,
+               'questions': page.object_list,
                }
 
     return render(request, 'home.html', context)
@@ -38,7 +38,7 @@ def pop_question(request):
 
     context = {'page': page,
                'paginator': paginator,
-               'questions': questions,
+               'questions': page.object_list,
                }
 
     return render(request, 'popular_questions.html', context)
@@ -47,8 +47,10 @@ def pop_question(request):
 def m_question(request, id):
 
     q = Question.objects.get(id=id)
+    a = Answer.objects.get(question=id)
 
     context = {'q': q,
+               'a': a,
                }
 
     return render(request, 'question.html', context)
