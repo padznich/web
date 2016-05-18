@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+Popular questions
+{% endblock %}
+
+{% block sidebar %}
+<h1 style="color:#4C420F; font-family:'Lobster';">Popular</h1>
+{% endblock %}
+
+{% block content %}
+{% for quest in questions %}
+<a href="{{quest.id}}"> {{quest.title}} </a><br>
+{% endfor %}
+{% endblock %}

@@ -12,7 +12,7 @@ def test(request):
 
 def question(request):
 
-    questions = Question.objects.order_by("-added_at")
+    questions = Question.objects.order_by("-id")
     limit = 10
     page = request.GET.get("page", 1)
     paginator = Paginator(questions, limit)
@@ -24,7 +24,7 @@ def question(request):
                'questions': questions,
                }
 
-    return render(request, 'index.html', context)
+    return render(request, 'home.html', context)
 
 
 def pop_question(request):
@@ -41,7 +41,7 @@ def pop_question(request):
                'questions': questions,
                }
 
-    return render(request, 'index.html', context)
+    return render(request, 'popular_questions.html', context)
 
 
 def m_question(request, id):
@@ -51,4 +51,4 @@ def m_question(request, id):
     context = {'q': q,
                }
 
-    return render(request, 'index.html', context)
+    return render(request, 'question.html', context)
