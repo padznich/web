@@ -14,7 +14,7 @@
         <div class="alert alert-danger">{{ e }}</div>
     {% endfor %}
 
-    <form class="form-horizontal" method="post" action="">
+    <form class="form-horizontal" method="post" action="">{% csrf_token %}
         <fieldset>
             {% for field in ask_form %}
             <div class="control-group
