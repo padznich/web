@@ -1,6 +1,13 @@
 from django import forms
 
-from models import Question, Answer
+from models import Question, Answer, User
+
+
+class LoginForm(forms.Form):
+
+    login = forms.CharField(max_length=50)
+    password = forms.PasswordInput()
+    email = forms.CharField(max_length=50)
 
 
 class AskForm(forms.Form):
@@ -34,7 +41,8 @@ class AskForm(forms.Form):
 class AnswerForm(forms.Form):
 
     text = forms.CharField(widget=forms.Textarea)
-    question = forms.IntegerField()
+    question = forms.IntegerField(widget=forms.HiddenInput)
+    _user = User()
 
     def clean(self):
         text = self.cleaned_data.get('text')
@@ -46,6 +54,7 @@ class AnswerForm(forms.Form):
         return self.cleaned_data
 
     def save(self):
+        self.cleaned_data['author'] = self._user
         answer = Answer(**self.cleaned_data)
         answer.save()
         return answer

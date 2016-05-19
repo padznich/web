@@ -17,3 +17,10 @@ sudo pip install -r requirements.txt
 sudo python ask/manage.py migrate
 
 sudo /etc/init.d/mysql restart
+
+sudo chmod +777 -R .
+sudo chmod +777 -R ask/.
+
+sudo python ask/manage.py shell
+from django.contrib.auth.models import User
+user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword').save().

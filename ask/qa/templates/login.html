@@ -1,0 +1,10 @@
+<form class="form-horizontal" method="post" action="">{% csrf_token %}
+    <fieldset>
+        {{ form }}
+    </fieldset>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">
+            Submit
+        </button>
+    </div>
+</form>
