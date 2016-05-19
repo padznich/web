@@ -14,6 +14,7 @@ sudo mysql -uroot -e "SHOW DATABASES;"
 
 sudo pip install -r requirements.txt
 
+sudo python ask/manage.py makemigrations
 sudo python ask/manage.py migrate
 
 sudo /etc/init.d/mysql restart

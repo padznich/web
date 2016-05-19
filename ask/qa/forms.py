@@ -6,7 +6,7 @@ from models import Question, Answer, User
 class LoginForm(forms.Form):
 
     login = forms.CharField(max_length=50)
-    password = forms.PasswordInput()
+    password = forms.CharField(max_length=50)
     email = forms.CharField(max_length=50)
 
 
